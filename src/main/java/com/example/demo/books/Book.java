@@ -6,19 +6,19 @@ public class Book {
 
     // Static Variable
     private static final String QTY = "";
-    
+
     // Non-Static Variable
     private String name;
     private double price;
     private int stock;
-    
+
     // Constructor
     public Book(String name, double price, int stock) {
         this.name = name;
         this.price = price;
         this.stock = stock;
     }
-    
+
     // Public Method
     public static Book createHarryPotterOne() {
         return new Book("H1", 8, 2);
@@ -27,7 +27,7 @@ public class Book {
     public static Book createHarryPotterTwo() {
         return new Book("H2", 8, 2);
     }
-    
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -61,6 +61,10 @@ public class Book {
         return true;
     }
 
+    public double getPrice() {
+        return this.price;
+    }
+
     // Private Method
-    
+
 }
