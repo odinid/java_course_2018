@@ -36,20 +36,31 @@ public class Order {
         if (!this.bookItem.isEmpty()) {
             this.bookAmount = this.bookItem.size();
             
-            for (BookItem book : bookItem)
-            {
-                // Calculate price
-                //this.totalPrice = bookItem.getBook().getPrice();
-                this.totalPrice += book.getTotalPrice();
-            }
+            // Calculate price
+            calculateTotalPrice();
                 
             // Calculate discount
-            if (getBookAmount() == 2) {
-                this.discount = getTotalPrice() * 0.05;
-            }
+            calculateDiscount();
 
             // Calculate net price
             this.netPrice = this.getTotalPrice() - this.getDiscount();
+        }
+    }
+
+    private void calculateDiscount() {
+        this.discount = 0;
+        if (getBookAmount() == 2) {
+            this.discount = getTotalPrice() * 0.05;
+        }
+        if (getBookAmount() == 3) {
+            this.discount = getTotalPrice() * 0.1;
+        }
+    }
+
+    private void calculateTotalPrice() {
+        for (BookItem book : bookItem)
+        {
+            this.totalPrice += book.getTotalPrice();
         }
     }
 

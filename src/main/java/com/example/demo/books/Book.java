@@ -4,9 +4,6 @@ package com.example.demo.books;
 // Getter/Setter
 public class Book {
 
-    // Static Variable
-    private static final String QTY = "";
-
     // Non-Static Variable
     private String name;
     private double price;
