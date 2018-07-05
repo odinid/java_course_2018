@@ -55,17 +55,17 @@ public class FizzBuzz {
         conditions.add(new KBTGCodition());
 		conditions.add(new OtherCondition());
 		
-        for (Condition condition : conditions) {
-            if (condition.check(input)) {
-                return condition.say();
-            }
-        }
-        
-        throw new RuntimeException("Condition not match");
-//		return conditions.parallelStream()
-//		        .filter(c -> c.check(input))
-//		        .map(c -> c.say())
-//		        .collect(Collectors.toList()).get(0);
+//        for (Condition condition : conditions) {
+//            if (condition.check(input)) {
+//                return condition.say();
+//            }
+//        }
+//        
+//        throw new RuntimeException("Condition not match");
+		return conditions.parallelStream()
+		        .filter(c -> c.check(input))
+		        .map(c -> c.say())
+		        .collect(Collectors.toList()).get(0);
 
 	}
 
