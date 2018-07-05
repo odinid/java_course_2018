@@ -1,10 +1,13 @@
 package com.example.demo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FizzBuzz {
 
 	private static final String BUZZ_STR = "Buzz";
 	private static final String FIZZ_STR = "Fizz";
-
+	private String result;
     public static void main(String[] args) {
         int[] datas = {1, 2, 3, 4, 5, 6};
         
@@ -22,7 +25,7 @@ public class FizzBuzz {
         }
     }
  
-    public String say(int input) {
+    public String say2(int input) {
         if (input == 15) {
             return FIZZ_STR + BUZZ_STR;
         }
@@ -42,30 +45,30 @@ public class FizzBuzz {
         return String.valueOf(input);
     }
     
-//	public String say(int input) {
-//		result = "";
+	public String say(int input) {
+		List<Condition> conditions = new ArrayList<>();
+		conditions.add(new FizzBuzzCodition());
+        conditions.add(new FizzCodition());
+        conditions.add(new BuzzCodition());
+        conditions.add(new KBTGCodition());
+		conditions.add(new OtherCondition());
+		
+        for (Condition condition : conditions) {
+            if (condition.check(input)) {
+                return condition.say();
+            }
+        }
+        
+        throw new RuntimeException("Condition not match");
 
-//		if (หารสามลงตัว(input)) {
-//			result = result + FIZZ_STR;
-//		}
+	}
 
-//        if (หารห้าลงตัว(input)) {
-//			result = result + BUZZ_STR;
-//		}
+    private boolean หารห้าลงตัว(int input) {
+        return input % 5 == 0;
+    }
 
-//		if (result == "") {
-//			result = String.valueOf(input);
-//		}
-
-//		return result;
-//	}
-
-//    private boolean หารห้าลงตัว(int input) {
-//        return input % 5 == 0;
-//    }
-//
-//    private boolean หารสามลงตัว(int input) {
-//        return input % 3 == 0;
-//    }
-
+    private boolean หารสามลงตัว(int input) {
+        return input % 3 == 0;
+    }
 }
+

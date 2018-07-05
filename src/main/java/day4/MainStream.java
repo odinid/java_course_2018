@@ -10,8 +10,18 @@ public class MainStream {
     public static void main(String[] args) {
         MainStream p = new MainStream();
         p.start();
+        p.startWithParallel();
     }
 
+    private void startWithParallel() {
+        List<String> lists = new ArrayList<>();
+        lists.add("One");
+        lists.add("Two");
+        lists.add("Three");
+        lists.stream().forEach(System.out::println);
+        lists.parallelStream().forEach(System.out::println);
+    }
+    
     private void start() {
         // Array
         String[] datas = new String[] {"One", "Two", "Three"};
